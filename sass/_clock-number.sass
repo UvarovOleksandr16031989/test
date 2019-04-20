@@ -1,0 +1,38 @@
+.clock-number
+  top: 50%
+  position: absolute
+  height: 100%
+  width: 100%
+  left: 50%
+  transform: translate(-50% ,-50%)
+  border-radius: 100%
+  &__item
+    top: 50%
+    position: absolute
+    width: 78%
+    left: 50%
+    border-radius: 100%
+  &__count
+    position: absolute
+    left: 2px
+    top: 50%
+    transform: translate(-50% , -50%)
+    color: #0E0E0C
+    +helvetica(20px)
+    &--bottom
+      position: absolute
+      right: -12px
+      top: 50%
+      left: auto
+
+%rotate_number
+  transform: translate(-50% ,-50%)  rotate(0)
+@for $i from 1 through 6
+  .clock-number__item:nth-child(#{$i})
+    @extend %rotate_number
+    $rotate: $i*30deg
+    transform: translate(-50% ,-50%)  rotate($rotate)
+    span
+      @extend %rotate_number
+      $rotate: $i*30deg
+      transform: translate(-50% ,-50%)  rotate(-$rotate)

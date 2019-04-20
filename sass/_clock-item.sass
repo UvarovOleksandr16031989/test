@@ -1,0 +1,47 @@
+.item
+  top: 50%
+  position: absolute
+  height: 100%
+  width: 100%
+  left: 50%
+  transform: translate(-50% ,-50%)
+  box-shadow: inset 1px 1px 0 rgba(47, 47, 80, 0.2)
+  border-radius: 100%
+  &__minute
+    position: absolute
+    top: 50%
+    left: 50%
+    width: 97%
+    height: 3px
+    &:after,
+    &:before
+      width: 1px
+      height: 5px
+      background: #1A1917
+      content: ''
+      position: absolute
+      display: inline-block
+      top: 50%
+      right: 1px
+      transform: translate(0 ,-50%) rotate(90deg)
+    &:before
+      right: auto
+      left: 1px
+    &:nth-child(5n)
+      &:before,
+      &:after
+        width: 3px
+        height: 12px
+        right: 3px
+      &:before
+        right: auto
+        left: 3px
+
+%rotate_item
+  transform: translate(-50% ,-50%)  rotate(0deg)
+@for $i from 1 through 30
+  .item__minute:nth-child(#{$i})
+    @extend %rotate_item
+    $rotate: $i*6deg
+    transform: translate(-50% ,-50%)  rotate($rotate)
+
